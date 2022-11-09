@@ -1,45 +1,24 @@
-import { getAuth } from "firebase/auth";
-import "./App.css";
-import app from "./firebase.init";
-import Form from "react-bootstrap/Form";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
-const auth = getAuth(app);
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home/Home";
+import Image from "./Pages/Image/Image";
+import ImageItem from "./Pages/ImageItem/ImageItem";
+import Login from "./Pages/Login/Login";
+
+import Signup from "./Pages/Login/Signup";
+import Header from "./Pages/Shared/Header/Header";
+
 function App() {
-  const handleEmailBlur= event =>{
-    console.log(event.target.event);
-  }
-  const handlePasswordBlur= event =>{
-    console.log(event.target.event);
-  }
-  const handleFormSubmit= event =>{
-    console.log(event.target.event);
-  }
   return (
     <div>
-      <div className="register w-50 mx-auto mt-5">
-        <h2 className="text-primary">Please Register</h2>
-        <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      </div>
+      <Header></Header>
+      <Home></Home>
+      <Routes>
+        <Route path="/image" element={<Image></Image>}></Route>
+        <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/signup" element={<Signup></Signup>}></Route>
+        <Route path="/item" element={<ImageItem></ImageItem>}></Route>
+      </Routes>
     </div>
   );
 }
