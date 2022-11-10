@@ -4,7 +4,7 @@ import "./ImageItem.css";
 const ImageItem = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/items")
+    fetch("https://hidden-beach-56443.herokuapp.com/items")
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
